@@ -4,3 +4,12 @@ services:
 script:
   - docker build -t mannydesigns/node .
   - docker images mannydesigns/node
+
+  beforre_deploy: 
+    - docker login -u kiroshailay -p ki09ro40s72
+
+  deploy:
+    provider: script
+    script: docker push mannydesigns/node
+    on:
+      branch: master
